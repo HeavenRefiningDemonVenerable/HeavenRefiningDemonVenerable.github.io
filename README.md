@@ -43,10 +43,7 @@ This project is deployed on GitHub Pages and can be accessed here.
 Contributing
 I appreciate any feedback or contributions to improve the project. Please feel free to fork the repository, create a feature branch, and submit a pull request.
 
-License
-This project is open source and available under the MIT License.
-
 Contact
-If you have any questions or would like to get in touch, please email me.
+If you have any questions or would like to get in touch, please email me at ogboye.demi@gmail.com .
 
 Created with ❤ by Demi O.
