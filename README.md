@@ -25,17 +25,14 @@ To set up and run this project locally on your machine, please follow the steps 
    git clone https://github.com/HeavenRefiningDemonVenerable/HeavenRefiningDemonVenerable.github.io.git
 Navigate to the project directory:
 
-bash
 Copy code
 cd HeavenRefiningDemonVenerable.github.io
 Install the dependencies:
 
-bash
 Copy code
 npm install
 Run the development server:
 
-bash
 Copy code
 npm start
 The app will launch in your default browser at http://localhost:3000.
