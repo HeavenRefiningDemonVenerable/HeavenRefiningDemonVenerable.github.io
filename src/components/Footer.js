@@ -7,8 +7,9 @@ import "../styles/Footer.css";
 function Footer() {
   return (
     <div className="footer">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out for collaborations or just a friendly chat.</p>
       <div className="socialMedia">
-        {/* Add your actual social media profile URLs in the href attributes */}
         <a href="https://www.instagram.com/itzdemi__/?next=%2F" target="_blank" rel="noopener noreferrer">
           <InstagramIcon />
         </a>
@@ -19,9 +20,7 @@ function Footer() {
           <EmailIcon />
         </a>
       </div>
-      <p>
-        This isn't serious, but I think it is hilarious. If this was serious, I would be ready to hack the world.
-      </p>
+      <p>© 2024 Demi Ogboye. All Rights Reserved.</p>
     </div>
   );
 }

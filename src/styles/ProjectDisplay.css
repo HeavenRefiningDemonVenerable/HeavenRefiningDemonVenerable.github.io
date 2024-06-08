@@ -1,48 +1,42 @@
 .project {
-    display: flex;
-    flex-direction: column; /* Aligns items from top to bottom */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align content to the start of the flex direction */
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dynamic gradient background */
-
-
-    max-width: 100%; /* Adjust the width as needed */
-    width: 100%; /* Adjust width to be responsive */
-  }
-  
-  .project h1 {
-    color: #fff; /* White text for better contrast on gradient */
-    margin-bottom: 10px; /* Spacing between title and skills */
-  }
-  
-  .project img {
-    max-width: 100%; /* Full width of the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners for the image */
-  }
-  
-  .project p {
-    text-align: center; /* Center the skills text */
-    color: #fff; /* White text */
-    margin-bottom: 20px; /* Spacing between skills and GitHub icon */
-  }
-  
-  .project svg {
-    /* You can add styles directly to the SVG or wrap it in a div to control the size more effectively */
-    font-size: 48px; /* Makes the GitHub icon larger */
-    color: #fff; /* White icon for contrast */
-    cursor: pointer; /* Changes cursor to pointer when hovering over the icon */
-  }
-
-  body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  max-width: 100%;
+  width: 100%;
 }
 
-  
-  /* Additional responsive adjustments if necessary */
-  @media (max-width: 768px) {
+.project h1 {
+  color: #00bfff; /* Updated text color for better visibility */
+  margin-bottom: 10px;
+}
 
-  }
-  
+.project img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.project p {
+  text-align: center;
+  color: #00bfff; /* Updated text color for better visibility */
+  margin-bottom: 20px;
+}
+
+.project svg {
+  font-size: 48px;
+  color: #00bfff; /* Updated text color for better visibility */
+  cursor: pointer;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  /* Additional responsive adjustments if necessary */
+}

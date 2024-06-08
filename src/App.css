@@ -1,5 +1,27 @@
+/* Ensure full-height background and correct footer positioning */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--background-color); /* Consistent background color */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  margin-top: auto; /* Push the footer to the bottom */
 }
 
 .App-logo {
@@ -26,6 +48,11 @@
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+}
+
+.App-link:hover {
+  text-decoration: underline;
 }
 
 @keyframes App-logo-spin {

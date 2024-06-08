@@ -2,12 +2,10 @@ import React from 'react';
 import '../styles/HomePage.css';
 
 function HomePage() {
-  // The path to images in the public folder can be referenced directly
-  const profileImagePath = process.env.PUBLIC_URL + '/profile.png'; 
+  const profileImagePath = process.env.PUBLIC_URL + '/profile.png';
 
   return (
     <div className="homepage">
-      {/* Image container */}
       <div className="profile-image-container">
         <img src={profileImagePath} alt="Demi" className="profile-image" />
       </div>
@@ -15,14 +13,21 @@ function HomePage() {
       <div className="intro-container">
         <h1>I'm Demi, a Computer Science Student</h1>
         <p className="intro-text">
-          "I am a student pursuing a bachelor's degree in Computer Science at Ontario Tech University. Throughout my studies, I have dabbled in machine learning, artificial intelligence, cybersecurity, and software development."
+          I am pursuing a bachelor's degree in Computer Science at Ontario Tech University. Throughout my studies, I have dabbled in machine learning, artificial intelligence, cybersecurity, and software development.
         </p>
         <div className="stats">
           <div className="stat">
             <span className="stat-value">2+</span>
             <span className="stat-key">Years of Experience</span>
           </div>
-          {/* ... other stats */}
+          <div className="stat">
+            <span className="stat-value">5+</span>
+            <span className="stat-key">Projects Completed</span>
+          </div>
+          <div className="stat">
+            <span className="stat-value">3</span>
+            <span className="stat-key">Languages Spoken</span>
+          </div>
         </div>
       </div>
 
@@ -43,7 +48,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-      {/* No footer here anymore */}
     </div>
   );
 }

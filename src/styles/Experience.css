@@ -1,38 +1,30 @@
-/* Assuming you've imported this CSS file after the timeline's CSS in your JSX file */
 .experience {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  }
-  
-  /* Target the specific timeline element more specifically */
-  .experience .vertical-timeline::before {
-    /* This targets the line in the timeline */
-    background: #3e497a; /* or any color you prefer */
-  }
-  
-  .experience .vertical-timeline-element--education {
-    /* This removes any box shadow if you wish */
-    box-shadow: none !important;
-  }
-  
-  /* Specific targeting can be done using deep selectors or pseudo-selectors like `:nth-of-type` or `:nth-child` */
-  .experience .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
-    background: #fff !important; /* Overrides the background for odd items */
-    color: #333 !important; /* Overrides the text color */
-  }
-  
-  .experience .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
-    background: #f0f0f0 !important; /* Overrides the background for even items */
-    color: #333 !important; /* Overrides the text color */
-  }
+  background: linear-gradient(to right, #2c3e50, #34495e);
+}
 
-  /* Target the date within the timeline elements */
+.experience .vertical-timeline::before {
+  background: #3e497a;
+}
+
+.experience .vertical-timeline-element--education,
+.experience .vertical-timeline-element--work {
+  box-shadow: none !important;
+}
+
+.experience .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
+  background: #fff !important;
+  color: #333 !important;
+}
+
+.experience .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
+  background: #f0f0f0 !important;
+  color: #333 !important;
+}
+
 .vertical-timeline-element-date {
-    color: white !important; /* Override the color to white */
-  }
-  
-  /* If the date is within a specific state such as hover, you might need to target that as well */
-  .vertical-timeline-element-date:hover {
-    color: white !important;
-  }
-  
-  
+  color: white !important;
+}
+
+.vertical-timeline-element-date:hover {
+  color: white !important;
+}
