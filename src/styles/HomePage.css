@@ -5,7 +5,7 @@
   --background-color: #ecf0f1;
   --text-color: #2c3e50;
   --highlight-color: #e74c3c;
-  --hover-text-color: #00bfff; /* Light blue color for text hover effect */
+  --hover-text-color: #00bfff;
 }
 
 .homepage {
@@ -105,22 +105,22 @@ h1 {
   background: var(--secondary-color);
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Added transition for color */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .skills .item:hover {
-  transform: scale(1.2); /* Increased scale for a more noticeable effect */
-  color: var(--hover-text-color); /* Change text color on hover */
+  transform: scale(1.2);
+  color: var(--hover-text-color);
 }
 
 .skills .item h3,
 .skills .item p {
-  transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+  transition: color 0.3s ease-in-out;
 }
 
 .skills .item:hover h3,
 .skills .item:hover p {
-  color: var(--hover-text-color); /* Change text color on hover */
+  color: var(--hover-text-color);
 }
 
 .contact {
@@ -147,5 +147,37 @@ h1 {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .intro-container {
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .skills .item {
+    margin: 5px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .skills .item {
+    margin: 5px;
+    padding: 5px;
   }
 }
