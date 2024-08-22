@@ -46,12 +46,40 @@ function Experience() {
           icon={<WorkIcon />}
         >
           <h3 className="vertical-timeline-element-title">
-            Getir, Chicago, Illinois
+            Demfy Integrated Services, Lagos, Nigeria
           </h3>
           <h4 className="vertical-timeline-element-subtitle">
-            Software Engineer Intern
+            IT Intern
           </h4>
-          <p>Worked on various projects involving software development and improvement, contributing to team objectives and learning industry best practices.</p>
+          <p>Assisted in maintaining IT infrastructure, troubleshooting issues, and improving network security.</p>
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="May 2024 - August 2024"
+          iconStyle={{ background: "#e9d35b", color: "#fff" }}
+          icon={<WorkIcon />}
+        >
+          <h3 className="vertical-timeline-element-title">
+            OddNet, Remote
+          </h3>
+          <h4 className="vertical-timeline-element-subtitle">
+            Software Engineering Intern
+          </h4>
+          <p>Developed web applications, collaborated with teams, and contributed to software improvements and performance enhancements.</p>
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="August 2024 - Present"
+          iconStyle={{ background: "#e9d35b", color: "#fff" }}
+          icon={<WorkIcon />}
+        >
+          <h3 className="vertical-timeline-element-title">
+            Immigrant Women in Business, Toronto, Ontario
+          </h3>
+          <h4 className="vertical-timeline-element-subtitle">
+            Marketing and Communication Intern
+          </h4>
+          <p>Managed website updates, created marketing content, and assisted in video production for promotional events.</p>
         </VerticalTimelineElement>
       </VerticalTimeline>
     </div>
