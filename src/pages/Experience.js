@@ -46,13 +46,14 @@ function Experience() {
           icon={<WorkIcon />}
         >
           <h3 className="vertical-timeline-element-title">
-            Demfy Integrated Services, Lagos, Nigeria
+            Demfy Integrated Services, Remote
           </h3>
           <h4 className="vertical-timeline-element-subtitle">
             IT Intern
           </h4>
           <p>Assisted in maintaining IT infrastructure, troubleshooting issues, and improving network security.</p>
         </VerticalTimelineElement>
+
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
           date="May 2024 - August 2024"
