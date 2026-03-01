@@ -1,30 +1,52 @@
+/* styles/Experience.css */
+
 .experience {
-  background: linear-gradient(to right, #2c3e50, #34495e);
+  min-height: 100vh;
+  padding: 42px 20px 70px;
+  background: transparent;
+  color: var(--text);
 }
 
+/* Timeline line */
 .experience .vertical-timeline::before {
-  background: #3e497a;
+  background: rgba(124, 140, 255, 0.28);
 }
 
-.experience .vertical-timeline-element--education,
-.experience .vertical-timeline-element--work {
-  box-shadow: none !important;
+/* Cards */
+.experience .vertical-timeline-element-content {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 18px !important;
+  backdrop-filter: blur(12px);
 }
 
-.experience .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
-  background: #fff !important;
-  color: #333 !important;
-}
-
+/* Remove your odd/even hardcoding */
+.experience .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
 .experience .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
-  background: #f0f0f0 !important;
-  color: #333 !important;
+  background: var(--card) !important;
+  color: var(--text) !important;
 }
 
+/* Date */
 .vertical-timeline-element-date {
-  color: white !important;
+  color: var(--muted) !important;
 }
 
-.vertical-timeline-element-date:hover {
-  color: white !important;
+/* Small typography polish */
+.experience h3,
+.experience h4 {
+  color: var(--text) !important;
+}
+
+.experience p {
+  color: var(--muted) !important;
+  line-height: 1.65;
+}
+
+/* Icons (if the library uses them) */
+.vertical-timeline-element-icon {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(124, 140, 255, 0.35) !important;
 }

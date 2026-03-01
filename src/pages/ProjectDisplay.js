@@ -10,15 +10,27 @@ function ProjectDisplay() {
 
   return (
     <div className="project">
-      <h1>{project.name}</h1>
-      <img src={project.image} alt={project.name} />
-      <p>
-        <b>Skills:</b> {project.skills}
-      </p>
-      <p>{project.description}</p>
-      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-        <GitHubIcon />
-      </a>
+      <div className="projectCard">
+        <h1>{project.name}</h1>
+
+        <div className="media">
+          <img src={project.image} alt={project.name} />
+        </div>
+
+        <div className="meta">
+          <p className="skillsLine">
+            <span className="label">Skills</span>
+            <span className="value">{project.skills}</span>
+          </p>
+
+          <p className="desc">{project.description}</p>
+
+          <a className="githubBtn" href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+            <GitHubIcon />
+            <span>View on GitHub</span>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

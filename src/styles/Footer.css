@@ -1,8 +1,14 @@
+/* styles/Footer.css */
+
 .footer {
   width: 100%;
-  padding: 20px;
-  background: var(--primary-color);
-  color: #fff;
+  padding: 26px 18px;
+  color: var(--text);
+
+  background: rgba(10, 14, 30, 0.55);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,40 +16,42 @@
 }
 
 .footer h2 {
-  margin-bottom: 10px;
-  font-size: 1.5em;
-  color: var(--highlight-color);
+  margin: 0 0 8px;
+  font-size: 1.15em;
+  color: var(--text);
 }
 
 .footer p {
-  color: #fff;
-  margin: 10px 0;
+  color: var(--muted);
+  margin: 10px 0 0;
+  line-height: 1.6;
 }
 
 .socialMedia {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  gap: 16px;
+  margin: 14px 0 6px;
 }
 
 .socialMedia a {
-  color: #fff;
-  margin: 0 15px;
-  font-size: 2em;
-  transition: color 0.3s ease-in-out;
+  color: var(--text);
+  opacity: 0.9;
+  font-size: 1.8em;
+  transition: transform 0.18s ease, opacity 0.18s ease, color 0.18s ease;
 }
 
 .socialMedia a:hover {
-  color: var(--highlight-color);
+  opacity: 1;
+  transform: translateY(-2px);
+  color: var(--accent);
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .socialMedia {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
-
   .socialMedia a {
-    font-size: 1.5em;
-    margin: 10px 0;
+    font-size: 1.6em;
   }
 }

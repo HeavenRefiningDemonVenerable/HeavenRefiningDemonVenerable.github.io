@@ -1,52 +1,132 @@
+/* styles/ProjectDisplay.css */
+
 .project {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  max-width: 100%;
+  min-height: 100vh;
+  padding: 42px 20px 70px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  color: var(--text);
 }
 
-.project h1 {
-  color: #00bfff; /* Updated text color for better visibility */
-  margin-bottom: 10px;
+.projectCard {
+  width: min(980px, 92vw);
+  border-radius: calc(var(--radius) + 6px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: softIn 420ms ease both;
 }
 
-.project img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.project p {
-  text-align: center;
-  color: #00bfff; /* Updated text color for better visibility */
-  margin-bottom: 20px;
-}
-
-.project svg {
-  font-size: 48px;
-  color: #00bfff; /* Updated text color for better visibility */
-  cursor: pointer;
-}
-
-body, html {
+.projectCard h1 {
   margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  padding: 22px 22px 14px;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: 0.2px;
+  line-height: 1.1;
 }
 
-@media (max-width: 480px) {
-  .project h1 {
-    font-size: 2em; /* Adjusted font size for smaller screens */
-  }
+.media {
+  padding: 0 22px;
+}
 
-  .project p {
-    font-size: 16px; /* Adjusted font size for smaller screens */
-  }
+.media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 16px 50px rgba(0,0,0,.35);
+  display: block;
+}
 
-  .project svg {
-    font-size: 36px; /* Adjusted icon size for smaller screens */
+.meta {
+  padding: 18px 22px 22px;
+}
+
+.skillsLine {
+  margin: 14px 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.skillsLine .label {
+  font-size: 12px;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.skillsLine .value {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.desc {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 16px;
+  max-width: 75ch;
+}
+
+.githubBtn {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--text);
+
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.githubBtn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124,140,255,0.45);
+  box-shadow: 0 12px 40px rgba(124,140,255,0.10);
+  color: var(--accent);
+}
+
+.githubBtn svg {
+  font-size: 24px;
+}
+
+@keyframes softIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .projectCard h1 {
+    padding: 18px 16px 12px;
+  }
+  .media {
+    padding: 0 16px;
+  }
+  .meta {
+    padding: 16px;
+  }
+  .desc {
+    font-size: 15px;
   }
 }

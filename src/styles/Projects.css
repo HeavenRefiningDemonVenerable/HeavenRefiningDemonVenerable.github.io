@@ -1,91 +1,121 @@
 .projects {
-  flex-grow: 1; /* Ensure the projects container grows to fill the available space */
+  min-height: 100vh;
+  padding: 42px 20px 70px;
+  color: rgba(255,255,255,.92);
+  background: transparent; /* let global bg show through */
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom right, #2c3e50, #34495e);
-  padding: 40px;
-  color: #00bfff; /* Updated color for better visibility */
 }
 
-.projects h1 {
-  color: #00bfff; /* Updated color for better visibility */
-  font-size: 2.5em;
-  font-weight: bolder;
-  margin-bottom: 40px;
+.projectsHeader {
+  width: min(1100px, 92vw);
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+.projectsHeader h1 {
+  margin: 0 0 8px 0;
+  font-size: clamp(26px, 2.8vw, 40px);
+}
+
+.projectsSub {
+  margin: 0 0 16px 0;
+  color: rgba(255,255,255,.68);
+  line-height: 1.6;
+}
+
+.controls {
+  display: grid;
+  gap: 12px;
+}
+
+.search {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,.92);
+  outline: none;
+}
+
+.search::placeholder {
+  color: rgba(255,255,255,.55);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,.88);
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124,140,255,0.45);
+  box-shadow: 0 12px 40px rgba(124,140,255,0.10);
+}
+
+.chip.active {
+  border-color: rgba(124,140,255,0.55);
+  box-shadow: 0 12px 40px rgba(124,140,255,0.14);
 }
 
 .projectList {
-  width: 100%;
-  max-width: 1200px;
+  width: min(1100px, 92vw);
+  margin-top: 16px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
 
-.projectItem {
-  border-radius: 15px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+.emptyState {
+  width: min(1100px, 92vw);
+  margin-top: 16px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
   text-align: center;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.5); /* Added background to make text more visible */
-  transition: transform 0.3s ease-in-out; /* Added transition for scaling */
+  color: rgba(255,255,255,.82);
 }
 
-.projectItem .bgImage {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.emptyState p {
+  color: rgba(255,255,255,.68);
 }
 
-.projectItem h1 {
-  font-size: 25px;
-  margin: 10px 0;
-  color: #00bfff; /* Updated text color for better visibility */
+@media (max-width: 980px) {
+  .projectList { grid-template-columns: 1fr 1fr; }
 }
 
-.projectItem p {
-  color: #00bfff; /* Updated text color for better visibility */
-  padding: 10px; /* Added padding for better readability */
+@media (max-width: 700px) {
+  .projectList { grid-template-columns: 1fr; }
 }
 
-.projectItem:hover {
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
-  transition: 0.3s ease-in;
-  cursor: pointer;
-  transform: scale(1.2); /* Added scale transform on hover */
+/* styles/Projects.css additions */
+
+.search:focus {
+  border-color: rgba(124, 140, 255, 0.55);
+  box-shadow: 0 0 0 4px rgba(124, 140, 255, 0.14);
 }
 
-@media only screen and (max-width: 1300px) {
-  .projectList {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted min-width for smaller screens */
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .projectList {
-    grid-template-columns: 1fr;
-  }
-  .projectItem {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .projects h1 {
-    font-size: 2em; /* Adjusted font size for smaller screens */
-  }
-
-  .projectItem h1 {
-    font-size: 20px; /* Adjusted font size for smaller screens */
-  }
-
-  .projectItem p {
-    font-size: 16px; /* Adjusted font size for smaller screens */
-  }
+.chip:focus {
+  outline: none;
+  border-color: rgba(124, 140, 255, 0.55);
+  box-shadow: 0 0 0 4px rgba(124, 140, 255, 0.14);
 }
