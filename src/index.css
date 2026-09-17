@@ -1,22 +1,36 @@
 /* src/index.css */
 
-/* ==== Futuristic Minimal Theme ==== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap");
+
+/* ==== Literary / Classical Theme ====
+   Paper-and-ink palette with a single wine-dark accent — a nod to Homer's
+   "wine-dark sea" rather than a generic brand color. */
 :root {
-  --bg0: #070914;
-  --bg1: #0b1020;
+  --paper: #f1ecde;       /* page background, aged paper */
+  --paper-raised: #e8e0c9; /* cards, raised surfaces */
+  --paper-line: #ffffff;   /* faint top-light on raised surfaces */
 
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.68);
+  --ink: #201c16;          /* primary text */
+  --ink-soft: #57503f;     /* secondary text */
+  --ink-faint: #8d8567;    /* tertiary / meta text */
 
-  --card: rgba(255, 255, 255, 0.06);
-  --card2: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.14);
+  --rule: #cabf9f;         /* hairline dividers */
+  --rule-soft: #ddd4b9;
 
-  --accent: #7c8cff; /* neon-periwinkle */
-  --accent2: #00d4ff; /* optional secondary glow */
+  --wine: #6e2430;         /* primary accent */
+  --wine-deep: #4c1720;    /* hover / pressed */
+  --bronze: #886630;       /* secondary accent, used sparingly */
 
-  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-  --radius: 18px;
+  --shadow: 0 10px 30px rgba(32, 28, 22, 0.12);
+  --shadow-soft: 0 4px 16px rgba(32, 28, 22, 0.08);
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --measure: 64ch;
 }
 
 html,
@@ -26,16 +40,11 @@ body {
 
 body {
   margin: 0;
-  color: var(--text);
-  background:
-    radial-gradient(900px 600px at 15% 10%, rgba(124, 140, 255, 0.18), transparent 55%),
-    radial-gradient(800px 550px at 80% 20%, rgba(0, 212, 255, 0.12), transparent 60%),
-    linear-gradient(180deg, var(--bg0), var(--bg1));
-
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
-  letter-spacing: 0.2px;
-
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -45,83 +54,112 @@ body {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 a {
-  color: var(--text);
+  color: inherit;
   text-decoration: none;
 }
-a:hover {
-  opacity: 0.92;
+
+/* Underline-on-hover treatment used for inline text links throughout
+   the site, instead of a generic arrow or pill button. */
+.text-link {
+  background-image: linear-gradient(var(--wine), var(--wine));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease, color 0.25s ease;
+  color: var(--ink);
+  padding-bottom: 1px;
+}
+
+.text-link:hover {
+  background-size: 100% 1px;
+  color: var(--wine-deep);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Selection */
 ::selection {
-  background: rgba(124, 140, 255, 0.35);
+  background: rgba(110, 36, 48, 0.16);
 }
 
-/* Reusable glass container */
-.glass {
-  background: var(--card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
-  backdrop-filter: blur(12px);
-}
-
-/* Buttons */
+/* Buttons: a quiet outlined mark, not a rounded pill */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease,
-    box-shadow 0.18s ease;
-  user-select: none;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(124, 140, 255, 0.45);
-  box-shadow: 0 10px 30px rgba(124, 140, 255, 0.14);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, rgba(124, 140, 255, 0.95), rgba(0, 212, 255, 0.65));
-  border-color: transparent;
-  color: #081021;
+  background: var(--wine);
+  border-color: var(--wine);
+  color: var(--paper);
+}
+
+.btn.primary:hover {
+  background: var(--wine-deep);
+  border-color: var(--wine-deep);
 }
 
 .btn.ghost {
-  background: transparent;
+  border-color: var(--rule);
+  color: var(--ink-soft);
 }
 
-/* Section title helpers */
+.btn.ghost:hover {
+  border-color: var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+
 .section-title {
-  font-size: clamp(22px, 2.4vw, 32px);
-  margin: 0 0 10px 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  margin: 0 0 6px 0;
 }
 
 .section-subtitle {
-  color: var(--muted);
-  margin: 0 0 18px 0;
-  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 22px 0;
+  line-height: 1.65;
+  max-width: 62ch;
 }
 
-/* App shell layout: keep footer at bottom */
 #root {
   min-height: 100vh;
   display: flex;
 }
 
-/* Reduce motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   .btn,
   a,

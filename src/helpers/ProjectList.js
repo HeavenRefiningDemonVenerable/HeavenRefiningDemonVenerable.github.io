@@ -1,51 +1,61 @@
-import Proj1 from "../assets/proj1.png";
-import Proj2 from "../assets/proj2.png";
-import Proj3 from "../assets/proj3.png";
+// src/helpers/ProjectList.js
+//
+// One entry per project, filled in from your resume. Add a project by
+// copying the shape below and pushing it onto the array — the homepage,
+// the /projects index, and each project's detail page all read from
+// this one list automatically. Ordered newest first; reorder freely.
+//
+// `image` paths are placeholders under /public/projects/ — drop your
+// screenshots in there with matching filenames (or edit the paths) and
+// they'll show up everywhere automatically.
 
 export const ProjectList = [
   {
-    name: "Retro Snake Game Remake",
-    image: Proj1,
-    year: "2024",
-    skills: ["Python", "Pygame"],
+    name: "Daemon File Watcher",
+    year: "2025",
+    image: process.env.PUBLIC_URL + "/projects/daemon-file-watcher.jpg",
     description:
-      "A modern remake of Snake with smooth controls, collision logic, scoring, and a clean UI loop.",
-    highlights: [
-      "Game loop + timing control (FPS) with consistent input handling",
-      "Collision detection + state management (game over / restart)",
-      "Clean separation of render/update logic",
-    ],
+      "A Rust-based background daemon that monitors a file system in real " +
+      "time, using the notify crate to detect directory changes and file " +
+      "events as they happen.",
+    skills: "Rust, Systems programming, File I/O",
+    githubUrl: "https://github.com/HeavenRefiningDemonVenerable/Rust-Daemon-File-Watcher",
+  },
+  {
+    name: "Retro Snake Game",
+    year: "2024",
+    image: process.env.PUBLIC_URL + "/projects/retro-snake-game.jpg",
+    description:
+      "A remake of the classic arcade snake game in Python and Pygame, " +
+      "structured around object-oriented principles with collision " +
+      "detection, score tracking, and game-state management.",
+    skills: "Python, Pygame, Object-oriented design",
     githubUrl: "https://github.com/HeavenRefiningDemonVenerable/RetroSnakeGame-Remake",
-    demoUrl: "", // optional: add a video or live link later
   },
   {
-    name: "WebChat Server",
-    image: Proj2,
+    name: "WebChat-Server",
     year: "2024",
-    skills: ["Java", "JavaScript", "HTML", "CSS", "JSON"],
+    image: process.env.PUBLIC_URL + "/projects/webchat-server.jpg",
     description:
-      "A web-based chat server supporting real-time messaging with a simple client UI.",
-    highlights: [
-      "Client–server messaging with structured JSON payloads",
-      "Basic validation and predictable request/response patterns",
-      "Clear separation between UI and server responsibilities",
-    ],
+      "A Java-based multi-client chat server enabling real-time " +
+      "communication between users, built with socket programming to " +
+      "handle concurrent client connections.",
+    skills: "Java, Sockets, Multithreading",
     githubUrl: "https://github.com/HeavenRefiningDemonVenerable/WebChat-Server",
-    demoUrl: "",
   },
   {
-    name: "Whiteboard Collaboration Site",
-    image: Proj3,
-    year: "2024",
-    skills: ["Java", "JavaScript", "HTML", "CSS"],
+    name: "Personal Portfolio",
+    year: "2023 - Present",
+    image: process.env.PUBLIC_URL + "/projects/personal-portfolio.jpg",
     description:
-      "A collaborative whiteboard with an interactive canvas for drawing and sharing ideas in real time.",
-    highlights: [
-      "Canvas drawing tools + event handling (mouse input)",
-      "Real-time collaboration logic (shared state updates)",
-      "Simple UX: clear canvas, tool selection, and smooth drawing",
-    ],
-    githubUrl: "https://github.com/HeavenRefiningDemonVenerable/WhiteboardCollaborationSite",
-    demoUrl: "",
+      "A fully responsive personal portfolio built with React and modern " +
+      "JavaScript, deployed and maintained on GitHub Pages with " +
+      "cross-browser compatibility in mind. (This site.)",
+    skills: "React, JavaScript, GitHub Pages",
+    // This is your live site, not a source repo — swap in the actual
+    // repo URL here if you'd rather "View source" link there instead.
+    githubUrl: "https://heavenrefiningdemonvenerable.github.io",
   },
 ];
+
+export default ProjectList;

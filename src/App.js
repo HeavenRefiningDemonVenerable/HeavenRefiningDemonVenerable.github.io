@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AmbientField from './components/AmbientField';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/Projects';
 import ProjectDisplay from './pages/ProjectDisplay';
@@ -13,6 +14,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <AmbientField />
         <Navbar />
         <div className="app-content">
           <Routes>

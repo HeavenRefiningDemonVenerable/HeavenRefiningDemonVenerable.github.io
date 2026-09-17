@@ -1,132 +1,86 @@
-/* styles/ProjectDisplay.css */
+/* src/styles/ProjectDisplay.css */
 
 .project {
   min-height: 100vh;
-  padding: 42px 20px 70px;
+  padding: 52px 20px 80px;
   width: 100%;
   display: flex;
   justify-content: center;
-  background: transparent;
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .projectCard {
-  width: min(980px, 92vw);
-  border-radius: calc(var(--radius) + 6px);
-  background: var(--card);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  animation: softIn 420ms ease both;
+  width: min(760px, 92vw);
+}
+
+.projectCard .backLink {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--ink-faint);
+  font-size: 14.5px;
 }
 
 .projectCard h1 {
-  margin: 0;
-  padding: 22px 22px 14px;
-  font-size: clamp(26px, 3vw, 42px);
-  letter-spacing: 0.2px;
+  font-size: clamp(30px, 3.6vw, 46px);
   line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.projectYear {
+  color: var(--ink-faint);
+  font-size: 15px;
+  margin-bottom: 26px;
 }
 
 .media {
-  padding: 0 22px;
+  margin-bottom: 26px;
 }
 
 .media img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 16px 50px rgba(0,0,0,.35);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--rule);
   display: block;
 }
 
-.meta {
-  padding: 18px 22px 22px;
-}
-
 .skillsLine {
-  margin: 14px 0 10px;
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .skillsLine .label {
-  font-size: 12px;
-  letter-spacing: 0.35px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.75);
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.04);
-  padding: 6px 10px;
-  border-radius: 999px;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 15px;
 }
 
 .skillsLine .value {
-  color: var(--muted);
-  line-height: 1.6;
+  color: var(--ink-soft);
+  font-size: 15px;
 }
 
 .desc {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.75;
-  font-size: 16px;
-  max-width: 75ch;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-size: 17px;
+  max-width: var(--measure);
+  margin-bottom: 28px;
 }
 
 .githubBtn {
-  margin-top: 16px;
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 12px 14px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.14);
-  color: var(--text);
-
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-}
-
-.githubBtn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(124,140,255,0.45);
-  box-shadow: 0 12px 40px rgba(124,140,255,0.10);
-  color: var(--accent);
-}
-
-.githubBtn svg {
-  font-size: 24px;
-}
-
-@keyframes softIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 520px) {
-  .projectCard h1 {
-    padding: 18px 16px 12px;
-  }
-  .media {
-    padding: 0 16px;
-  }
-  .meta {
-    padding: 16px;
-  }
   .desc {
-    font-size: 15px;
+    font-size: 16px;
   }
 }

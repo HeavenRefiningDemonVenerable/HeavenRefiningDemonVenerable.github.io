@@ -3,10 +3,24 @@ import ProjectItem from "../components/ProjectItem";
 import { ProjectList } from "../helpers/ProjectList";
 import "../styles/Projects.css";
 
+function toRoman(num) {
+  const table = [
+    [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let n = num;
+  let result = "";
+  for (const [value, symbol] of table) {
+    while (n >= value) {
+      result += symbol;
+      n -= value;
+    }
+  }
+  return result;
+}
+
 function normalizeSkills(skills) {
   if (!skills) return [];
   if (Array.isArray(skills)) return skills.map((s) => String(s).trim()).filter(Boolean);
-  // if it's a string like "Java, CSS, HTML"
   return String(skills)
     .split(",")
     .map((s) => s.trim())
@@ -18,7 +32,6 @@ function Projects() {
   const [activeSkill, setActiveSkill] = useState("All");
 
   const enriched = useMemo(() => {
-    // Add normalizedSkills so the UI works no matter how skills are stored
     return ProjectList.map((p, idx) => ({
       ...p,
       __id: idx,
@@ -53,10 +66,9 @@ function Projects() {
     <div className="projects">
       <div className="projectsHeader">
         <h1>Projects</h1>
-
         <p className="projectsSub">
-          A small selection of things I’ve built — focused on clean structure, real functionality,
-          and polished UI.
+          A small number of things I've built when the mood has taken me, I am
+          always consistently working towards making new stuff. It is my calling.
         </p>
 
         <div className="controls">
@@ -64,11 +76,11 @@ function Projects() {
             className="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by project, tech, or keyword…"
+            placeholder="Search by project, tech, or keyword..."
             aria-label="Search projects"
           />
 
-          <div className="chips" role="list" aria-label="Project filters">
+          <div className="chips" role="list" aria-label="Filter by skill">
             {allSkills.map((s) => (
               <button
                 key={s}
@@ -81,9 +93,8 @@ function Projects() {
             ))}
           </div>
 
-          <div style={{ marginTop: 6, color: "rgba(255,255,255,.68)", fontSize: 13 }}>
-            Showing <b style={{ color: "rgba(255,255,255,.92)" }}>{filtered.length}</b>{" "}
-            {filtered.length === 1 ? "project" : "projects"}
+          <div className="resultCount">
+            Showing <b>{filtered.length}</b> {filtered.length === 1 ? "project" : "projects"}
           </div>
         </div>
       </div>
@@ -93,7 +104,7 @@ function Projects() {
           <h2>No results</h2>
           <p>Try a different keyword or clear the filter.</p>
           <button
-            className="chip"
+            className="btn ghost"
             type="button"
             onClick={() => {
               setQuery("");
@@ -105,10 +116,11 @@ function Projects() {
         </div>
       ) : (
         <div className="projectList">
-          {filtered.map((project) => (
+          {filtered.map((project, idx) => (
             <ProjectItem
               id={project.__id}
               key={project.__id}
+              numeral={toRoman(idx + 1)}
               name={project.name}
               image={project.image}
               description={project.description}

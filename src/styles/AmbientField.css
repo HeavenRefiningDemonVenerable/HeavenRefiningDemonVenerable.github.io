@@ -1,0 +1,59 @@
+/* src/styles/AmbientField.css */
+/* A fixed, full-viewport ambient layer of falling petals and small
+   Mjölnir marks, shown behind the navbar but above every page's
+   content. Purely decorative: no pointer events, and it switches off
+   entirely for prefers-reduced-motion. */
+
+.ambient-field {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.petal {
+  position: absolute;
+  top: -28px;
+  background: var(--wine);
+  opacity: 0.28;
+  border-radius: 70% 0 70% 0;
+  animation-name: petalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes petalFall {
+  from {
+    transform: translateY(-28px) rotate(0deg);
+  }
+  to {
+    transform: translateY(112vh) rotate(300deg);
+  }
+}
+
+.hammer {
+  position: absolute;
+  top: -34px;
+  color: var(--bronze);
+  fill: currentColor;
+  opacity: 0.22;
+  animation-name: hammerFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hammerFall {
+  from {
+    transform: translateY(-34px) rotate(0deg);
+  }
+  to {
+    transform: translateY(112vh) rotate(-220deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-field {
+    display: none;
+  }
+}

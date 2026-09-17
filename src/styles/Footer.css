@@ -1,57 +1,21 @@
-/* styles/Footer.css */
+/* src/styles/Footer.css */
 
 .footer {
   width: 100%;
-  padding: 26px 18px;
-  color: var(--text);
-
-  background: rgba(10, 14, 30, 0.55);
-  border-top: 1px solid var(--border);
-  backdrop-filter: blur(14px);
+  padding: 26px 20px;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
 
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.footer h2 {
-  margin: 0 0 8px;
-  font-size: 1.15em;
-  color: var(--text);
+.footer .fine-print {
+  font-size: 13.5px;
+  color: var(--ink-faint);
 }
 
-.footer p {
-  color: var(--muted);
-  margin: 10px 0 0;
-  line-height: 1.6;
-}
-
-.socialMedia {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 14px 0 6px;
-}
-
-.socialMedia a {
-  color: var(--text);
-  opacity: 0.9;
-  font-size: 1.8em;
-  transition: transform 0.18s ease, opacity 0.18s ease, color 0.18s ease;
-}
-
-.socialMedia a:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-  color: var(--accent);
-}
-
-@media (max-width: 600px) {
-  .socialMedia {
-    flex-wrap: wrap;
-  }
-  .socialMedia a {
-    font-size: 1.6em;
-  }
+.footer .fine-print a {
+  color: var(--ink-faint);
 }

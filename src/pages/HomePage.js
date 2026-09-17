@@ -1,158 +1,230 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/HomePage.css";
+import { site } from "../content/site";
+import { ProjectList } from "../helpers/ProjectList";
+import { ValknutIcon, LaurelIcon, SkullIcon, ToriiIcon } from "../components/Emblems";
 
-let ProjectList = null;
-try {
-  // If this exists in your repo, we’ll show Featured Projects automatically.
-  // If it doesn't, nothing breaks.
-  // eslint-disable-next-line global-require
-  ProjectList = require("../helpers/ProjectList").ProjectList;
-} catch (e) {
-  ProjectList = null;
+// Small roman-numeral converter for the featured-work index (I, II, III...).
+function toRoman(num) {
+  const table = [
+    [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let n = num;
+  let result = "";
+  for (const [value, symbol] of table) {
+    while (n >= value) {
+      result += symbol;
+      n -= value;
+    }
+  }
+  return result;
 }
+
+const EMBLEM_ICONS = {
+  valknut: ValknutIcon,
+  laurel: LaurelIcon,
+  skull: SkullIcon,
+  torii: ToriiIcon,
+};
+
+
 
 function HomePage() {
   const profileImagePath = process.env.PUBLIC_URL + "/profile.png";
+  const featured = ProjectList.slice(0, 3);
 
-  const featured = Array.isArray(ProjectList) ? ProjectList.slice(0, 3) : [];
+  const [wheelBoosted, setWheelBoosted] = useState(false);
+  const [openInspiration, setOpenInspiration] = useState(null);
+
+  const spinWheel = () => {
+    setWheelBoosted(true);
+    setTimeout(() => setWheelBoosted(false), 1600);
+  };
 
   return (
     <div className="homepage">
-      <div className="profile-image-container">
-        <img src={profileImagePath} alt="Demi Ogboye" className="profile-image" />
+      <div className="hero">
+        <div className="profile-wrap">
+          <svg
+            className={`fate-wheel${wheelBoosted ? " boosted" : ""}`}
+            viewBox="0 0 220 220"
+            role="button"
+            tabIndex={0}
+            aria-label="Give the wheel a spin"
+            onClick={spinWheel}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && spinWheel()}
+          >
+            <circle
+              cx="110"
+              cy="110"
+              r="96"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeDasharray="2 10"
+            />
+            <circle
+              cx="110"
+              cy="110"
+              r="80"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            {Array.from({ length: 16 }).map((_, i) => {
+              const angle = (i * 22.5 * Math.PI) / 180;
+              const x1 = 110 + 80 * Math.cos(angle);
+              const y1 = 110 + 80 * Math.sin(angle);
+              const x2 = 110 + 92 * Math.cos(angle);
+              const y2 = 110 + 92 * Math.sin(angle);
+              return (
+                <line
+                  key={i}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke="currentColor"
+                  strokeWidth={i % 4 === 0 ? "2" : "1"}
+                />
+              );
+            })}
+          </svg>
+          <img src={profileImagePath} alt={site.name} className="profile-image" />
+        </div>
+
+        <div className="hero-text">
+          <blockquote className="epigraph">
+            {site.epigraph.lines.map((line, i) => (
+              <span className="line" key={i} style={{ animationDelay: `${i * 90}ms` }}>
+                {line}
+              </span>
+            ))}
+          </blockquote>
+          <div className="epigraph-source">
+            &mdash; {site.epigraph.author},{" "}
+            <a href={site.epigraph.sourceUrl} target="_blank" rel="noopener noreferrer">
+              {site.epigraph.source}
+            </a>
+          </div>
+
+          <h1 className="hero-name">{site.name}</h1>
+          <p className="hero-role">{site.affiliation}</p>
+
+          <p className="intro-text">{site.bio}</p>
+
+          <div className="hero-actions">
+            <Link className="btn primary" to="/projects">
+              View Projects
+            </Link>
+            <Link className="btn ghost" to="/experience">
+              Experience
+            </Link>
+            <a className="btn ghost" href={`mailto:${site.email}`}>
+              Contact
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="intro-container">
-        <p
-          style={{
-            margin: "0 0 10px 0",
-            fontSize: 13,
-            letterSpacing: 0.8,
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.68)",
-          }}
-        >
-          Computer Science @ Ontario Tech • Software Developer
-        </p>
-
-        <h1>Human Life is like a gamble with no odds, eventually we will all lose our priviledge of playing this game. -- Usogui</h1>
-
-        <p className="intro-text">
-          I’m a Computer Science student focused on full-stack development and practical problem-solving.
-          I’ve built projects in web development and explored System Design fundamentals, with a
-          strong focus on writing maintainable code and shipping polished user experiences.
-        </p>
-
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 14 }}>
-          <Link className="btn primary" to="/projects">View Projects</Link>
-          <Link className="btn" to="/experience">Experience</Link>
-          <a className="btn ghost" href="mailto:ogboye.demi@gmail.com">Contact</a>
-        </div>
-
-        <div className="stats">
-          <div className="stat">
-            <span className="stat-value">2+</span>
-            <span className="stat-key">Years building</span>
+      <div className="colophon">
+        {site.stats.map((s) => (
+          <div className="stat" key={s.label}>
+            <span className="stat-value">{s.value}</span>
+            <span className="stat-key">{s.label}</span>
           </div>
-          <div className="stat">
-            <span className="stat-value">5+</span>
-            <span className="stat-key">Projects shipped</span>
-          </div>
-          <div className="stat">
-            <span className="stat-value">3</span>
-            <span className="stat-key">Languages</span>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 10, color: "rgba(255,255,255,0.68)" }}>
-          <a
-            href="https://github.com/HeavenRefiningDemonVenerable"
-            target="_blank"
-            rel="noreferrer"
-            style={{ borderBottom: "1px solid rgba(255,255,255,0.18)" }}
-          >
-            GitHub
-          </a>
-          <span style={{ opacity: 0.6, margin: "0 10px" }}>•</span>
-          <a
-            href="https://www.linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            style={{ borderBottom: "1px solid rgba(255,255,255,0.18)" }}
-          >
-            LinkedIn
-          </a>
-        </div>
+        ))}
       </div>
 
-      <div className="skills">
-        <h2 style={{ margin: "0 0 8px 0" }}>Skills</h2>
-        <p style={{ margin: "0 0 16px 0", color: "rgba(255,255,255,0.68)" }}>
-          A quick snapshot of tools I’m comfortable with (and actively leveling up).
-        </p>
+      {site.inspirations && site.inspirations.length > 0 && (
+        <div className="inspirations">
+          <h2 className="section-title">Reading the Room</h2>
+          <p className="section-subtitle">
+            A few stories and mythologies that flavor how I think about building
+            things. Tap one for more.
+          </p>
+          <div className="inspirations-list">
+            {site.inspirations.map((insp) => {
+              const Icon = EMBLEM_ICONS[insp.icon];
+              const isOpen = openInspiration === insp.label;
+              return (
+                <button
+                  type="button"
+                  key={insp.label}
+                  className={`inspiration${isOpen ? " open" : ""}`}
+                  onClick={() => setOpenInspiration(isOpen ? null : insp.label)}
+                  aria-expanded={isOpen}
+                >
+                  {Icon && <Icon aria-hidden="true" />}
+                  <span className="label">{insp.label}</span>
+                  <span className="note">{insp.note}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
-        <div className="list">
-          <div className="item">
-            <h3>Front-End</h3>
-            <p>React, HTML/CSS, responsive UI, accessibility basics</p>
-          </div>
-          <div className="item">
-            <h3>Back-End</h3>
-            <p>Node.js, REST APIs, .NET fundamentals</p>
-          </div>
-          <div className="item">
-            <h3>Languages</h3>
-            <p>JavaScript, Java, Python, C++</p>
-          </div>
+      <div className="skills-section">
+        <div className="section-rule">
+          <span className="emblem">
+            <ValknutIcon aria-hidden="true" />
+          </span>
+        </div>
+        <h2 className="section-title" style={{ marginTop: 30 }}>Skills</h2>
+        <p className="section-subtitle">
+          A quick snapshot of tools I'm comfortable with, and actively leveling up.
+        </p>
+        <div className="skills-list">
+          {site.skills.map((skill) => (
+            <div className="item" key={skill.title}>
+              <h3>{skill.title}</h3>
+              <p>{skill.detail}</p>
+            </div>
+          ))}
         </div>
       </div>
 
       {featured.length > 0 && (
-        <div className="skills" style={{ marginTop: 18 }}>
-          <h2 style={{ margin: "0 0 8px 0" }}>Featured Projects</h2>
-          <p style={{ margin: "0 0 16px 0", color: "rgba(255,255,255,0.68)" }}>
-            A few projects I’m proud of — click for details, tech, and links.
+        <div className="featured-section">
+          <div className="section-rule">
+            <span className="emblem">
+              <LaurelIcon aria-hidden="true" />
+            </span>
+          </div>
+          <h2 className="section-title" style={{ marginTop: 30 }}>Featured Work</h2>
+          <p className="section-subtitle">
+            A few projects I'm proud of, open them to see more info.
           </p>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 14,
-            }}
-          >
+          <div className="featured-list">
             {featured.map((p, idx) => (
-              <Link
-                key={idx}
-                to={`/projects/${idx}`}
-                className="item"
-                style={{ textAlign: "left" }}
-              >
-                <div style={{ fontWeight: 700, marginBottom: 6 }}>{p.name}</div>
-                <div style={{ color: "rgba(255,255,255,0.68)", lineHeight: 1.5 }}>
-                  {p.description || "Project details, build notes, and links."}
-                </div>
-                {p.skills && (
-                  <div style={{ marginTop: 10, fontSize: 13, opacity: 0.9 }}>
-                    {p.skills}
-                  </div>
+              <Link to={`/projects/${idx}`} className="featured-row" key={idx}>
+                <span className="featured-numeral">{toRoman(idx + 1)}</span>
+                <span>
+                  <span className="featured-title">{p.name}</span>
+                  {p.description && (
+                    <span className="featured-desc">{p.description}</span>
+                  )}
+                </span>
+                <span className="featured-year">{p.year}</span>
+                {p.image && (
+                  <span
+                    className="featured-thumb"
+                    style={{ backgroundImage: `url(${p.image})` }}
+                    aria-hidden="true"
+                  />
                 )}
               </Link>
             ))}
           </div>
 
-          <div style={{ marginTop: 14 }}>
-            <Link className="btn" to="/projects">See all projects</Link>
+          <div className="featured-more">
+            <Link className="text-link" to="/projects">
+              See all projects
+            </Link>
           </div>
-
-          <style>
-            {`
-              @media (max-width: 860px) {
-                .skills div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-              }
-            `}
-          </style>
         </div>
       )}
     </div>

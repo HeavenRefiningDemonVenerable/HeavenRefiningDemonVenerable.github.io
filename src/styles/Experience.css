@@ -1,52 +1,103 @@
-/* styles/Experience.css */
+/* src/styles/Experience.css */
 
 .experience {
   min-height: 100vh;
-  padding: 42px 20px 70px;
-  background: transparent;
-  color: var(--text);
+  padding: 52px 20px 80px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.experience .page-heading {
+  width: min(900px, 92vw);
+  margin: 0 auto 30px;
+}
+
+.experience .page-heading h1 {
+  font-size: clamp(30px, 3.4vw, 44px);
+  margin-bottom: 8px;
+}
+
+.experience .page-heading p {
+  color: var(--ink-soft);
+  max-width: 62ch;
 }
 
 /* Timeline line */
 .experience .vertical-timeline::before {
-  background: rgba(124, 140, 255, 0.28);
+  background: var(--rule);
 }
 
 /* Cards */
 .experience .vertical-timeline-element-content {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-  box-shadow: var(--shadow) !important;
-  border-radius: 18px !important;
-  backdrop-filter: blur(12px);
+  background: var(--paper-raised) !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-md) !important;
 }
 
-/* Remove your odd/even hardcoding */
+.experience .vertical-timeline-element-content-arrow {
+  border-right-color: var(--paper-raised) !important;
+}
+
 .experience .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
 .experience .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
-  background: var(--card) !important;
-  color: var(--text) !important;
+  background: var(--paper-raised) !important;
+  color: var(--ink) !important;
 }
 
-/* Date */
 .vertical-timeline-element-date {
-  color: var(--muted) !important;
+  color: var(--ink-faint) !important;
+  font-style: italic;
 }
 
-/* Small typography polish */
-.experience h3,
+.experience h3 {
+  font-family: var(--font-display) !important;
+  font-size: 19px !important;
+  color: var(--ink) !important;
+}
+
 .experience h4 {
-  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--ink-soft) !important;
 }
 
 .experience p {
-  color: var(--muted) !important;
+  color: var(--ink-soft) !important;
   line-height: 1.65;
 }
 
-/* Icons (if the library uses them) */
 .vertical-timeline-element-icon {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
-  border: 1px solid rgba(124, 140, 255, 0.35) !important;
+  box-shadow: 0 0 0 3px var(--paper), var(--shadow-soft) !important;
+  border: 1px solid var(--rule) !important;
+}
+
+.expandToggle {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-soft) !important;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  background: var(--paper);
 }
